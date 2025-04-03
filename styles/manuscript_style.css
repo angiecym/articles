@@ -1,0 +1,317 @@
+/* 手稿美学风格 - manuscript.css */
+
+/* 基础变量 */
+:root {
+    --paper: #f9f5eb;
+    --ink: #3a3226;
+    --accent: #8c6a56;
+    --highlight: #d4b483;
+    --border: 8px;
+}
+
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'EB Garamond', serif;
+    background-color: #e8e1d1;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(0,0,0,0.03)" d="M0 0h100v100H0z"/></svg>');
+    background-size: 40px 40px;
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 紧凑型风格切换器 */
+.style-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    background: rgba(255,255,255,0.9);
+    padding: 8px;
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.style-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.style-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.style-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+.style-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* 暗色模式下的调整 */
+.dark-mode .style-switcher {
+    background: rgba(0,0,0,0.7);
+}
+
+.dark-mode .style-btn {
+    color: #ccc;
+}
+
+.dark-mode .style-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.dark-mode .style-btn.active {
+    color: white;
+}
+
+/* 文章容器 */
+.article-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--paper);
+	padding: 60px 70px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.1);
+    outline: 15px solid var(--paper);
+}
+
+.article-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50px;
+    right: 50px;
+    height: 100%;
+    border-left: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(0,0,0,0.05);
+    pointer-events: none;
+}
+
+/* 头部区域 */
+.hero-section {
+    height: 70vh;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 0; /* 移除原有底部间距 */
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    z-index: -1;
+}
+
+/* 文章头部 */
+.article-header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px 70px 30px;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    color: white;
+    z-index: 10;
+}
+
+.article-title {
+    font-size: 2.8rem;
+	font-weight: 600;
+    color: white;    
+    margin-bottom: 15px;
+	line-height: 1.2;
+    font-style: italic;
+	mix-blend-mode: difference;	
+}
+
+.article-subtitle {
+    color: var(--highlight);
+    font-size: 1.3rem;
+	margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.article-meta {
+    color: rgba(255,255,255,0.8);
+    border-top: 1px dashed rgba(255,255,255,0.3);
+	font-size: 0.95rem;
+    letter-spacing: 0.5px;
+	margin-bottom: 20px;
+}
+
+/* 首字下沉效果 */
+.article-content p:first-child:first-letter {
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    margin: 0.15em 0.1em 0 0;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* 文章内容 */
+.article-content {
+    font-size: 1.1rem;
+	max-width: 700px;
+	padding: 0 40px 80px;
+}
+
+.article-content p {
+    margin-bottom: 1.8em;
+    text-align: justify;    
+    hyphens: auto;
+}
+
+/* 内容图片 */
+.article-content img {
+    width: 100%;
+	max-width: 900px;
+    height: auto;
+    margin: 1.4em 0;
+	margin-top: calc(1.4em* 1.6);
+    display: block;
+    border: 1px solid rgba(0,0,0,0.1); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-top: -30px;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+/* 引用区块 */
+.quote-section {
+    float: right;
+    width: 250px;
+    margin: 10px -100px 20px 30px;
+    padding: 15px;
+    background: rgba(212, 180, 131, 0.1);
+    border-left: 3px solid var(--highlight);
+    font-size: 0.9rem;
+}
+
+.quote-text {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+}
+
+.quote-author {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-style: normal;
+    color: var(--accent);
+}
+
+/* 文章页脚 */
+.article-footer {
+    max-width: 700px;
+    margin: 0 auto;    
+    border-top: 1px dashed var(--accent);
+    color: var(--accent);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.tag {
+    border: 1px solid var(--highlight);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .style-switcher {
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
+        padding: 8px;
+    }
+    
+    .article-container {        
+		padding: 0 0 20px;
+		margin-top: -30px;
+    }
+    
+	.article-container before {
+		left: 20px;
+        right: 20px;
+    }
+	
+    .article-title {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        height: 50vh;
+        min-height: 400px;
+		margin-bottom: 20px;
+    }
+    
+	.article-header,
+    .article-content {
+        padding: 0 20px 30px;
+    }
+	
+    .article-content p:first-child:first-letter {
+        font-size: 3.5rem;
+    } 
+	
+    .quote-section {
+        font-size: 1.4rem;
+        padding: 20px 0;
+        margin: 30px 0;
+    }
+}

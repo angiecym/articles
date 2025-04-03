@@ -1,0 +1,347 @@
+/* 画廊风格 - gallery_style.css */
+
+/* 基础变量 */
+:root {
+    --cream: #f8f4e9;
+    --paper: #fffcf5;
+    --gold: #c0a062;
+    --slate: #3a4a58;
+    --ink: #2a2a2a;
+    --border: 12px;
+}
+
+/* 基础样式 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--cream);
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(0,0,0,0.05)" d="M0 0h100v100H0z"/></svg>');
+    background-size: 20px 20px;
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 紧凑型风格切换器 */
+.style-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    background: rgba(255,255,255,0.9);
+    padding: 8px;
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.style-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.style-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.style-btn.active {
+    background: var(--gold);
+    color: white;
+}
+
+.style-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* 暗色模式下的调整 */
+.dark-mode .style-switcher {
+    background: rgba(0,0,0,0.7);
+}
+
+.dark-mode .style-btn {
+    color: #ccc;
+}
+
+.dark-mode .style-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.dark-mode .style-btn.active {
+    color: white;
+}
+
+/* 文章容器 */
+.article-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--paper);   
+	padding: 60px 70px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2), 
+                0 0 0 1px rgba(0,0,0,0.05);
+    position: relative;
+	border: 1px solid rgba(0,0,0,0.1);
+}
+
+.article-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+    z-index: 10;
+}
+
+/* 头部区域 */
+.hero-section {
+    height: 60vh;
+	width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;    
+    position: relative;
+    overflow: hidden;
+    color: var(--cream);
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+    to top, 
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 30%, 
+    transparent 50%
+  );
+    z-index: -1;
+}
+
+/* 文章头部 */
+.article-header {
+    position: relative;
+	z-index: 10;
+	padding: 50px 60px 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+	background: rgba(0,0,0,0.3);
+	backdrop-filter: blur(3px);
+}
+
+.article-title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin: 0 0 15px;
+    color: var(--cream);
+    line-height: 1.2;
+    font-style: italic;
+	mix-blend-mode: difference;	
+}
+
+.article-subtitle {
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+	margin-bottom: 20px;
+}
+
+.meta-divider {
+    margin: 0 12px;
+    opacity: 0.5;
+}
+
+/* 文章内容 */
+.article-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+}
+
+.article-content p {
+    margin-bottom: 2em;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.article-content p:first-child:first-letter {
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    margin: 0.15em 0.1em 0 0;
+    color: var(--gold);
+}
+
+/* 内容图片 */
+.article-content img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin-top: calc(1.4em* 1.6);
+	margin: 1.4em 0;
+    display: block;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+    outline: 1px solid rgba(0,0,0,0.1);
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-top: -30px;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+/* 引用区块 */
+.quote-section {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--gold);
+    font-weight: 400;
+    padding: 30px 0;
+    margin: 50px 0;
+    text-align: center;
+    position: relative;
+    font-style: italic;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+.quote-section:before,
+.quote-section:after {    
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    line-height: 1;
+}
+
+.quote-section:before {
+    top: 0;
+    left: 0;
+}
+
+.quote-section:after {
+    bottom: 0;
+    right: 0;
+}
+
+.quote-text {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quote-author {
+    display: block;
+    font-size: 1rem;
+    margin-top: 30px;
+    font-style: normal;
+    color: var(--gold);
+}
+
+/* 文章页脚 */
+.article-footer {
+    max-width: 700px;
+    margin: 0 auto;    
+    border-top: 1px solid rgba(0,0,0,0.08);
+    color: var(--gold);
+    font-size: 0.9rem;
+	text-align: center;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.tag {
+    background: #f1f1f1;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .style-switcher {
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
+        padding: 8px;
+    }
+    
+    .article-container {        
+		padding: 0 0 20px;
+		margin-top: -30px;
+    }
+    
+    .article-header,
+    .article-content {
+        padding: 0 20px 30px;
+    }
+    
+    .article-title {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        height: 50vh;
+        min-height: 400px;
+        margin-bottom: 20px;
+    }
+    
+    .article-content p:first-child:first-letter {
+        font-size: 3.5rem;
+    }
+    
+    .quote-section {
+        font-size: 1.4rem;
+        padding: 20px 0;
+        margin: 30px 0;
+    }
+}
