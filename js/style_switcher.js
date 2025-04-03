@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取所有切换按钮
     const styleButtons = document.querySelectorAll('.style-btn');
     const styleTheme = document.getElementById('style-theme');
+	const toggleButton = document.querySelector('.toggle-switcher');
+	const styleSwitcher = document.querySelector('.style-switcher');
+	
+	toggleButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        styleSwitcher.classList.toggle('collapsed');
+    });
     
     // 从本地存储获取保存的风格偏好
     const savedStyle = localStorage.getItem('preferredStyle');
