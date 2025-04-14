@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const articleContainer = document.querySelector('.article-container');
-	fetch('article_001.txt')
+	const fullPath = window.location.pathname;
+	const fileName= fullPath.split('/').pop().split('.')[0];
+	const txtName = '/articles/contents/' + fileName + '.txt';
+	fetch(txtName)
         .then(response => response.text())
         .then(data => {
             // 分割文件内容为行数组
@@ -30,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			heroSection.className = 'hero-section';
             if (metadata.heroimg) {
                 heroImg = document.createElement('img');
-				heroImg.src = 'images/' + metadata.heroimg;
+				heroImg.src = '/articles/images/' + fileName + '/' + metadata.heroimg;
 				heroImg.className = 'hero-image';
 				heroSection.append(heroImg);
 				overLay = document.createElement('div');
@@ -81,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (line.startsWith('<img') && line.endsWith('>')) {
                     const contentImg = document.createElement('img');
-					contentImg.src = 'images/' + line.replace('<img','').replace('>','').trim();
+					contentImg.src = '/articles/images/' + fileName + '/' + line.replace('<img','').replace('>','').trim();
 					articleContent.append(contentImg);
                 } else {
                     const contentP = document.createElement('p');
