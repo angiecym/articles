@@ -1,4 +1,4 @@
-heroimg: hero-img-article001.png
+heroimg: hero-img-article_001.png
 title: 现代艺术：从毕加索到卡尔·安德烈
 subtitle: 艺术能唤醒人的觉知
 metainfo: 作者：陈亚梅|题图：网络
