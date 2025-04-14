@@ -1,8 +1,8 @@
 heroimg: hero-img-article_001.png
 title: 现代艺术：从毕加索到卡尔·安德烈
 subtitle: 艺术能唤醒人的觉知
-metainfo: 作者：陈亚梅|题图：网络
-footer:发布于 2024-12-27 10:59・IP 属地北京
+metainfo: 作者：陈亚梅
+footer:发布于 2024-12-27 10:59
 tags: 极简主义|毕加索|建筑设计|当代艺术
 content:
 <img article_001_pic_001.jpg>
