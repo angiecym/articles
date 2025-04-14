@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angie 艺术随笔集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+	<link id="style-theme" rel="stylesheet" href="">
+</head>
+<body >    
+    <div class="style-switcher">
+		<div class="style-buttons">
+			<button class="style-btn" data-style="exhibition_style" title="展览风格">
+				<svg id="style-icon-01" class="style-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="24988" width="20" height="20"></svg>
+			</button>
+			<button class="style-btn" data-style="gallery_style" title="画廊风格">
+				<svg id="style-icon-02" class="style-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21849" width="20" height="20"></svg>
+			</button>
+			<button class="style-btn" data-style="manuscript_style" title="手稿风格">
+				<svg id="style-icon-03" class="style-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17754" width="20" height="20"></svg>
+			</button>
+		</div>
+		<button class="toggle-switcher" title="切换风格选择器">
+			<svg id="toggle-icon-01" class="toggle-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26053" width="36" height="36"></svg>
+		</button>
+	</div>
+	
+	<!-- 列表页头部 -->
+    <header class="list-header">
+        <div class="header-content">
+            <h1>Angie 艺术随笔集</h1>
+            <p>探索艺术与思想的交汇点</p>
+        </div>
+    </header>
+
+    <!-- 文章列表 -->
+    <main class="article-list"></main>
+
+    <!-- 分页 -->
+    <div class="pagination">
+        <a href="#" class="prev">上一页</a>
+        <a href="#" class="page active">1</a>
+        <a href="#" class="page">2</a>
+        <a href="#" class="page">3</a>
+        <a href="#" class="next">下一页</a>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2023 艺术随笔集 | 探索艺术的无限可能</p>
+            <div class="social-links">
+                <a href="#"><i class="icon-weibo"></i></a>
+                <a href="#"><i class="icon-wechat"></i></a>
+                <a href="#"><i class="icon-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+	<script src="/articles/js/style_switcher.js"></script>
+	<script src="/articles/js/addCards.js"></script>
+</body>
+</html>
