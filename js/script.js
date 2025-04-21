@@ -48,29 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				articleTitle.textContent = metadata.title;
 				articleHeader.append(articleTitle);
 			}
-            if (metadata.excerpt) {
+            if (metadata.author) {
 				const articleSubTitle = document.createElement('div');
 				articleSubTitle.className = 'article-subtitle';
-				articleSubTitle.textContent = metadata.excerpt;
+				articleSubTitle.textContent = '作者：' + metadata.author;
 				articleHeader.append(articleSubTitle);
 			}
-            if (metadata.metainfo) {
-				const articleMeta = document.createElement('div');
-				articleMeta.className = 'article-meta';
-				const arr = metadata.metainfo.split('|');
-				arr.forEach((metainfo,index) => {
-					const metaSplit = document.createElement('span');
-					metaSplit.textContent = metainfo;
-					if(index>0){
-						const divider = document.createElement('span');
-						divider.className = 'meta-divider';
-						divider.textContent = '|';
-						articleMeta.append(divider);
-					}
-					articleMeta.append(metaSplit);
-				});
-				articleHeader.append(articleMeta);
-			}
+            
 			heroSection.append(articleHeader);
 			articleContainer.append(heroSection);							
             
@@ -96,11 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			
 			const footer = document.createElement('footer');
 			footer.className = 'article-footer';
-            if (metadata.footer) {
-				const footerContent = document.createElement('p');
-				footerContent.textContent = metadata.footer;
-				footer.append(footerContent);
-			}
+            
             if (metadata.tags) {
 				const tags = document.createElement('div');
 				tags.className = 'tags';

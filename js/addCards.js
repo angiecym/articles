@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			
 
 async function addArticleCard(line){		
+	console.log(line);
 	const articleList = document.querySelector('.article-list');	
 	const card = document.createElement('article');
 	card.className = 'article-card';
