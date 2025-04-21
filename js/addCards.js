@@ -7,23 +7,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const line = lines[i];
                 if (line === '') continue;				
 				const line_data = JSON.parse(line);				
-				addArticleCard(line_data.fileId);
+				addArticleCard(line_data);
 			}
 	   });
 			
 
-async function addArticleCard(fileName){	
-	const metadata = await getArticleInfo(fileName);	
+async function addArticleCard(line){		
 	const articleList = document.querySelector('.article-list');	
 	const card = document.createElement('article');
 	card.className = 'article-card';
 	const alink = document.createElement('a');
-	alink.href = '/articles/articles/' + fileName;
+	alink.href = '/articles/articles/' + line.fileId;
 	alink.className = 'card-link';
 	const cardImg = document.createElement('div');
 	cardImg.className = 'card-image';
 	const heroImg = document.createElement('img');
-	heroImg.src = '/articles/images/' + fileName.split('.')[0] + '/' + metadata.heroimg;
+	heroImg.src = '/articles/images/' + line.fileId.split('.')[0] + '/' + line.heroimg;
 	
 	const image_overlay = document.createElement('div');
 	image_overlay.className = 'image-overlay';
@@ -31,53 +30,19 @@ async function addArticleCard(fileName){
 	const cardContent = document.createElement('div');
 	cardContent.className = 'card-content';
 	const title = document.createElement('h2');
-	title.textContent = metadata.title;
+	title.textContent = line.title;
 	const subtitle = document.createElement('p');
 	subtitle.className = 'excerpt';
-	subtitle.textContent = metadata.subtitle;
+	subtitle.textContent = line.excerpt;
 	const meta = document.createElement('div');
-	meta.className = 'meta';
-	const meta1 = document.createElement('span');
-	meta1.textContent = metadata.metainfo;
-	const meta2 = document.createElement('span');
-	meta2.textContent = metadata.footer;
+	meta.className = 'meta';	
 	const meta3 = document.createElement('span');
-	meta3.textContent = metadata.tags;
-	meta.append(meta1,meta2,meta3);
+	meta3.textContent = line.tags;
+	meta.append(meta3);
 	cardContent.append(title,subtitle,meta);
 	alink.append(cardImg,cardContent);
 	card.append(alink);
 	articleList.append(card);
-}
-
-async function getArticleInfo(fileName){
-	const metadata = {};
-	const txtName = '/articles/contents/' + fileName.split('.')[0] + '.txt';
-	await fetch(txtName)
-        .then(response => response.text())
-        .then(data => {
-            // 分割文件内容为行数组
-            const lines = data.split('\n');
-            
-            // 提取元数据部分            
-            let contentStartIndex = 0;
-            
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (line === '') continue;
-                
-                const colonIndex = line.indexOf(':');
-                if (colonIndex === -1) {
-                    contentStartIndex = i;
-                    break;
-                }
-                
-                const key = line.substring(0, colonIndex).trim();
-                const value = line.substring(colonIndex + 1).trim();
-                metadata[key] = value;
-            }
-		})
-	return metadata;
 }
 			
 
