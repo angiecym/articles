@@ -205,6 +205,10 @@ body {
     color: var(--gold);
     margin-bottom: 20px;
     font-weight: 400;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 限制行数为2 */
+    overflow: hidden;
 }
 
 .article-meta {
