@@ -437,6 +437,10 @@ body {
     color: var(--gold);
     margin-bottom: 20px;
     line-height: 1.6;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 限制行数为2 */
+    overflow: hidden;
 }
 
 .meta {
