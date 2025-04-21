@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-fetch('https://api.github.com/repos/angiecym/articles/contents/articles')
-       .then(response => response.json())
+	fetch('/articles/contents/all_articles.txt')
+       .then(response => response.text())
        .then(data => {
-         const htmlFiles = data.filter(item => item.name.endsWith('.html'));		 
-		 htmlFiles.forEach(file => {addArticleCard(file.name);});        
-       });
+			const lines = data.split('\n');
+			for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line === '') continue;				
+				const line_data = JSON.parse(line);				
+				addArticleCard(line_data.fileId);
+			}
+	   });
+			
 
 async function addArticleCard(fileName){	
-	const metadata = await getArticleInfo(fileName);
+	const metadata = await getArticleInfo(fileName);	
 	const articleList = document.querySelector('.article-list');	
 	const card = document.createElement('article');
 	card.className = 'article-card';
@@ -19,7 +24,7 @@ async function addArticleCard(fileName){
 	cardImg.className = 'card-image';
 	const heroImg = document.createElement('img');
 	heroImg.src = '/articles/images/' + fileName.split('.')[0] + '/' + metadata.heroimg;
-	console.log(metadata.heroimg);
+	
 	const image_overlay = document.createElement('div');
 	image_overlay.className = 'image-overlay';
 	cardImg.append(heroImg,image_overlay);
