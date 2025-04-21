@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const value = line.substring(colonIndex + 1).trim();
                 metadata[key] = value;
             }
-            
+            console.log(metadata);
             // 将元数据显示在页面上
 			const heroSection = document.createElement('section');
 			heroSection.className = 'hero-section';
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				articleTitle.textContent = metadata.title;
 				articleHeader.append(articleTitle);
 			}
-            if (metadata.subtitle) {
+            if (metadata.excerpt) {
 				const articleSubTitle = document.createElement('div');
 				articleSubTitle.className = 'article-subtitle';
-				articleSubTitle.textContent = metadata.subtitle;
+				articleSubTitle.textContent = metadata.excerpt;
 				articleHeader.append(articleSubTitle);
 			}
             if (metadata.metainfo) {
