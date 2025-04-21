@@ -1,0 +1,14 @@
+{"fileId":"article_001","title":"现代艺术：从毕加索到卡尔·安德烈"}
+{"fileId":"article_002","title":"艺术重在对人思考方式的提问"}
+{"fileId":"article_003","title":"艺术故事|雷诺阿：女性形象的崇拜者"}
+{"fileId":"article_004","title":"现代艺术100年：从马奈到毕加索（1820-1920）"}
+{"fileId":"article_005","title":"梁思成 “新而中” 建筑长什么样？以马岩松、孟凡浩、庄子玉、朱锫作品为例"}
+{"fileId":"article_006","title":"什么样的建筑才是梁思成“新而中”思想的建筑？"}
+{"fileId":"article_007","title":"我们的“文化身份“是什么？从马岩松和王澍的建筑比较谈起。"}
+{"fileId":"article_008","title":"可以骑行的建筑装置，让城市因此变得热闹了"}
+{"fileId":"article_009","title":"凯伦·史密斯：中西方文化交流不应中断，文化就是互相理解的最好工具和基础 | 观点"}
+{"fileId":"article_010","title":"全球排行榜TOP1 |高光时刻陨落的涂鸦巨星让-米歇尔·巴斯奇亚"}
+{"fileId":"article_011","title":"张晖：根据自己的逻辑推进绘画"}
+{"fileId":"article_012","title":"刘锋植：中国艺术界怀才不遇的遗珠|ART STORY逝者"}
+{"fileId":"article_013","title":"艺术故事|徐冰：一不小心染上鬼气"}
+{"fileId":"article_014","title":"塞尚的静物画好在哪里？"}
