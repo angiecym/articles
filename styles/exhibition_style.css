@@ -498,3 +498,101 @@ body {
         margin-bottom: 40px;
     }    
 }
+
+/* 分类标签容器 */
+.category-tabs {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 80px; /* 导航栏高度 */
+    z-index: 999;
+    margin-bottom: 30px;
+}
+
+.tabs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--padding);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* 隐藏滚动条 - Firefox */
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none; /* 隐藏滚动条 - Chrome/Safari */
+}
+
+/* 单个标签样式 */
+.tab {
+    flex: 0 0 auto;
+    padding: 12px 24px;
+    margin-right: 10px;
+    border: none;
+    background: transparent;
+    color: var(--gray);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tab:last-child {
+    margin-right: 0;
+}
+
+.tab:hover {
+    color: var(--black);
+}
+
+.tab.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 3px 3px 0 0;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .category-tabs {
+        top: 60px; /* 缩小导航栏高度后的调整 */
+    }
+    
+    .tab {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .tabs-container {
+        padding: 0 15px;
+    }
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .category-tabs {
+        background-color: #2a2a2a;
+    }
+    
+    .tab {
+        color: #b0b0b0;
+    }
+    
+    .tab:hover {
+        color: var(--white);
+    }
+    
+    .tab.active {
+        color: var(--accent);
+    }
+}

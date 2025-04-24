@@ -562,3 +562,79 @@ body {
         outline-offset: -5px;
     }
 }
+
+/* 画廊风格分类标签 */
+.category-tabs {
+    background-color: var(--paper);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: sticky;
+    top: 80px;
+    z-index: 999;
+    margin-bottom: 40px;
+}
+
+.tabs-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    flex: 0 0 auto;
+    padding: 14px 28px;
+    margin-right: 15px;
+    border: none;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.tab:hover {
+    color: var(--slate);
+}
+
+.tab.active {
+    color: var(--slate);
+    font-weight: 600;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--slate);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .category-tabs {
+        top: 60px;
+        margin-bottom: 30px;
+    }
+    
+    .tabs-container {
+        padding: 0 30px;
+    }
+    
+    .tab {
+        padding: 12px 20px;
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+}
