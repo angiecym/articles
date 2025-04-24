@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+const tabButtons = document.querySelectorAll('.tab');
+tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.dataset.category;
+        addList(category);
+    });
+});
+addList('all');
+
+function addList(category){	
+	clearList();
 	fetch('/articles/contents/all_articles.txt')
        .then(response => response.text())
        .then(data => {
@@ -7,13 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const line = lines[i];
                 if (line === '') continue;				
 				const line_data = JSON.parse(line);				
-				addArticleCard(line_data);
+				addArticleCard(line_data,category);
 			}
 	   });
-			
+	tabButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+    });
+}		
 
-async function addArticleCard(line){		
+async function addArticleCard(line,category){		
 	console.log(line);
+	if(category!=='all' && category!==line.category){return;}
 	const articleList = document.querySelector('.article-list');	
 	const card = document.createElement('article');
 	card.className = 'article-card';
@@ -45,6 +60,10 @@ async function addArticleCard(line){
 	card.append(alink);
 	articleList.append(card);
 }
-			
+
+function clearList(){
+	const articleList = document.querySelector('.article-list');
+	articleList.innerHTML = '';
+}	
 
 });
